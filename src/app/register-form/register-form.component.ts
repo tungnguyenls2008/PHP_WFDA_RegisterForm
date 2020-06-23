@@ -16,6 +16,10 @@ export class RegisterFormComponent implements OnInit {
     gender: new FormControl('', Validators.required),
     phone: new FormControl('', [Validators.required])
   });
+  loginGroup = new FormGroup({
+    loginEmail: new FormControl('', [Validators.required, Validators.email]),
+    loginPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
+  });
 
 
   constructor() {
@@ -28,7 +32,7 @@ export class RegisterFormComponent implements OnInit {
     return value;
   }
 
-  onSubmit() {
-    console.log(this.formGroup);
+  onSubmit(value) {
+    console.log(value);
   }
 }

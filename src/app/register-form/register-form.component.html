@@ -1,6 +1,6 @@
 <fieldset>
   <legend><h1>REGISTRATION FORM</h1></legend>
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup)">
     <table class="table table-responsive">
 
       <tr style="">
@@ -68,4 +68,19 @@
 
     </table>
   </form>
+</fieldset>
+<fieldset>
+  <legend><h1>LOGIN</h1></legend><form [formGroup]="loginGroup" (ngSubmit)="onSubmit(loginGroup)">
+  <label>Email:
+    <input type="email" formControlName="loginEmail">
+    <div *ngIf="loginGroup.get('loginEmail').invalid && loginGroup.get('loginEmail').touched">Not a valid email</div>
+  </label>
+  <label>Password:
+    <input type="password" formControlName="loginPassword">
+    <div *ngIf="loginGroup.get('loginPassword').invalid && loginGroup.get('loginPassword').touched">Password have to be at
+      least 8 characters, at most 32 characters
+    </div>
+  </label>
+  <input type="submit" class="btn btn-primary" value="LOGIN" [disabled]="loginGroup.invalid">
+</form>
 </fieldset>
